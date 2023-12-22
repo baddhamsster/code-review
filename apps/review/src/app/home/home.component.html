@@ -1,0 +1,31 @@
+<main class="px-3">
+  <div class="w-100 d-flex">
+    <mat-card class="col-6">
+      <mat-card-header class="border-bottom mx-3">
+        <mat-card-title>
+          <header>Employees</header>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div>
+          <p *ngFor="let text of review | async">
+            <span>{{ text }}</span>
+          </p>
+        </div>
+        <button mat-raised-button (click)="copyToClipboard()">Copy</button>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="col-6">
+      <mat-card-header class="border-bottom mx-3">
+        <mat-card-title>
+          <header>Selection</header>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngFor="let emp of employees">
+            <mat-checkbox [(ngModel)]="emp.available" (change)="updateEmployee(emp, $event)">{{emp.name}}</mat-checkbox>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</main>
